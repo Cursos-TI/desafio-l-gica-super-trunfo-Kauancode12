@@ -22,7 +22,7 @@ int main(){
     float super_poder, super_poder2;
 
     
-    //Operações que declaram uma nova variavel a partir da divisão do valor de outras e forçam o resultado da divisão a adotar o tipo float
+    //Operações que atribuem um valor a uma variavel a partir da divisão do valor de outras e forçam o resultado da divisão a adotar o tipo float
     densidade_populacional = (float)populacao / area;
 
     pib_per_capita = (float)pib / populacao;
@@ -44,7 +44,7 @@ int main(){
 
     
 
-    //Operações que declaram uma nova variavel a partir da divisão do valor de outras e forçam o resultado da divisão a adotar o tipo float
+    //Operações que atribuem um valor a uma variavel a partir da divisão do valor de outras e forçam o resultado da divisão a adotar o tipo float
     densidade_populacional2 = (float)populacao2 / area2;
 
     pib_per_capita2 = (float)pib2 / populacao2;
@@ -65,10 +65,11 @@ int main(){
     printf("PIB per capita: %.2f\n", pib_per_capita2);
     printf("Super Poder: %.3f\n\n", super_poder2);
 
+    //Exibe na tela um menu e retira a escolha do usuario
     printf("*** Seja bem vindo ao super trunfo ***\n");
     printf("Para começar escolha o primeiro atributo para comparação\n");
     printf("1.População\n");
-    printf("2.pontos turísticos\n");
+    printf("2.Pontos turísticos\n");
     printf("3.Área em km²\n");
     printf("4.PIB\n");
     printf("5.Densidade populacional\n");
@@ -77,18 +78,16 @@ int main(){
     scanf("%d", &escolhaJogador);
 
     //Escolhe um dos cases de acordo com o numero digitado pelo jogador
-    //compara os valores e indica quem venceu por meio de uma condição estabelecida
+    //compara os valores utilizando operador ternário e armazena em uma variavel o resultado da comparação
     switch(escolhaJogador)
     {
     case 1:
         printf("Cidades: %s x %s\n População: %lu x %lu\n\n", cidade, cidade2, populacao, populacao2);
         resultado1 = populacao > populacao2 ? 1 : 0;
         break;
-
     case 2:
         printf("Cidades: %s x %s\n Pontos turísticos: %d x %d\n\n", cidade, cidade2, pontos_turisticos, pontos_turisticos2);
         resultado1 = pontos_turisticos > pontos_turisticos2 ? 1 : 0;
-        
         break;
     case 3:
         printf("Cidades: %s x %s\n Área em km²: %f x %f\n\n", cidade, cidade2, area, area2);
@@ -115,9 +114,10 @@ int main(){
     break;
     }
 
+    //exibe um segundo menu e retira a escolha do usuario para o segundo atributo
     printf("Escolha o segundo atributo para comparação\n");
     printf("1.População\n");
-    printf("2.pontos turísticos\n");
+    printf("2.Pontos turísticos\n");
     printf("3.Área em km²\n");
     printf("4.PIB\n");
     printf("5.Densidade populacional\n");
@@ -125,20 +125,22 @@ int main(){
     printf("7.Superpoder\n");
     scanf("%d", &escolha2Jogador);
 
+    //Verifica se o jogador escolheu o mesmo atributo da primeira e exibe um aviso
     if (escolhaJogador == escolha2Jogador)
     {
         printf("Você escolheu o mesmo atributo, tente novamente.\n\n");
+
+    //Escolhe um dos cases de acordo com o numero digitado pelo jogador
+    //compara os valores utilizando operador ternário e armazena em uma variavel o resultado da comparação
     } else {
         switch(escolha2Jogador)
         {case 1:
             printf("Cidades: %s x %s\n População: %lu x %lu\n\n", cidade, cidade2, populacao, populacao2);
             resultado2 = populacao > populacao2 ? 1 : 0;
             break;
-    
         case 2:
             printf("Cidades: %s x %s\n Pontos turísticos: %d x %d\n\n", cidade, cidade2, pontos_turisticos, pontos_turisticos2);
             resultado2 = pontos_turisticos > pontos_turisticos2 ? 1 : 0;
-            
             break;
         case 3:
             printf("Cidades: %s x %s\n Área em km²: %f x %f\n\n", cidade, cidade2, area, area2);
@@ -166,16 +168,18 @@ int main(){
     
         }
 
+        //Verifica o valor da comparação e indica o vencedor
         if (resultado1 && resultado2)
         {
-            printf("Parabéns, você venceu!\n");
+            printf("Carta 1 foi o grande vencedor!\n");
 
         } else if (resultado1 != resultado2){
             printf("Empatou!\n");
         } else {
-            printf("Infelizmente, você perdeu.\n");
+            printf("Carta 2 foi o grande vencedor!\n");
         }
     }
+
     //Esse programa funciona como um jogo de cartas simples
 
     return 0;
